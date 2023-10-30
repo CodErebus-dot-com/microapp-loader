@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["jest", "node"],
+    "composite": true,
+    "module": "commonjs",
+    "outDir": "../../dist/out-tsc",
+    "esModuleInterop": true,
+    "resolveJsonModule": true
+  },
+  "exclude": ["src/generator/generator.test.ts", "node_modules"],
+  "include": [
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "**/*.test.tsx",
+    "**/*.spec.tsx",
+    "**/*.test.js",
+    "**/*.spec.js",
+    "**/*.test.jsx",
+    "**/*.spec.jsx",
+    "**/*.d.ts"
+  ]
+}

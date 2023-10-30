@@ -1,0 +1,53 @@
+#Logs
+logs/
+.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+#Dependencies
+node_modules/
+.pnp/
+.pnp.js/
+
+#Distribution directory
+dist/
+
+#Production
+build/
+
+#Testing
+/coverage
+
+#Misc
+.DS_Store
+.env.local
+.env.development.local
+.env.production.local
+.env.test.local
+
+#npm cache directory
+.npm
+
+#eslint cache
+.eslintcache
+
+#repl history
+.node_repl_history
+
+#output of 'npm pack'
+*.tgz
+
+#yarn integrity file
+.yarn-integrity
+
+#firebase config
+firebase.json
+.firebaserc
+.firebase
+
+#github config
+.github/
+
+# #vscode config
+# .vscode/
