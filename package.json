@@ -1,10 +1,9 @@
 {
   "name": "@coderebus/microapp-loader",
   "description": "A npm package that helps load micro-frontends dynamically within a host/container app at runtime",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "publishConfig": {
-    "access": "public",
-    "registry": ""
+    "access": "public"
   },
   "keywords": [
     "react",

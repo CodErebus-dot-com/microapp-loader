@@ -7,11 +7,9 @@ Micro Front-end Loader (or MFE Loader) is a powerful utility that simplifies the
 ## Table of Contents
 
 - [Features](#features)
-- [Consumers Section](#consumers-section)
-  - [Usage](#usage)
-  - [RemoteModuleProps](#remotemoduleprops)
-  - [Sample](#sample)
-- [Contributors Section](#contributors-section)
+- [Usage](#usage)
+- [RemoteModuleProps](#remotemoduleprops)
+- [Sample](#sample)
 
 ## Features
 
@@ -28,24 +26,25 @@ Micro Front-end Loader (or MFE Loader) is a powerful utility that simplifies the
 > - If you want to import remotes statically (not recommended), then you might need an asynchronous boundary.
 > - No need to configure the remotes in the Webpack configuration file of your host/container app (i.e. no need to define `remotes` in host module federation config).
 
-## Consumers Section
-
-### Usage
+## Usage
 
 1. Install the package using `npm install @coderebus/microapp-loader` or `yarn add @coderebus/microapp-loader`.
 
 2. Import `FederatedComponent` and [RemoteModuleProps](#remotemoduleprops) from the package where you want to load any exposed module.
 
    ```jsx
-   import { FederatedComponent, RemoteModuleProps } from '@coderebus/microapp-loader';
+   import {
+     FederatedComponent,
+     RemoteModuleProps,
+   } from "@coderebus/microapp-loader";
    ```
 
 3. Create an object that will contain the information of the remote module to be loaded and then, provide it to the `FederatedComponent` as a prop.
 
    ```jsx
    const config: RemoteModuleProps = {
-     scope: 'remote_app1',
-     module: 'Header',
+     scope: "remote_app1",
+     module: "Header",
      url: `http://localhost:3000/remoteEntry.js`, // manually add the url of the remoteEntry.js file
    };
    ```
@@ -54,7 +53,7 @@ Micro Front-end Loader (or MFE Loader) is a powerful utility that simplifies the
    <FederatedComponent {...config} />
    ```
 
-### RemoteModuleProps
+## RemoteModuleProps
 
 | Prop             | Required | Type                               | Description                                                                            |
 | ---------------- | -------- | ---------------------------------- | -------------------------------------------------------------------------------------- |
@@ -65,18 +64,21 @@ Micro Front-end Loader (or MFE Loader) is a powerful utility that simplifies the
 | errorFallback    | N        | `() =>JSX.Element` or `ReactNode`  | The fallback component to be rendered if there is an error while rendering the module. |
 | ErrorBoundary    | N        | `ComponentType<any>`               | A custom Error Boundary component to be used instead of the default one.               |
 
-### Sample
+## Sample
 
 ```jsx
-import React, { useState } from 'react';
-import { FederatedComponent, RemoteModuleProps } from '@coderebus/microapp-loader';
-import { Button, Loader } from 'my-ui-lib'; // change the import accordingly
+import React, { useState } from "react";
+import {
+  FederatedComponent,
+  RemoteModuleProps,
+} from "@coderebus/microapp-loader";
+import { Button, Loader } from "my-ui-lib"; // change the import accordingly
 
 const ErrorFallback = <div>Something went wrong!</div>;
 
 const config: RemoteModuleProps = {
-  scope: 'remote_app1',
-  module: 'Header',
+  scope: "remote_app1",
+  module: "Header",
   url: `http://localhost:3000/remoteEntry.js`,
   suspenseFallback: Loader, // optional but recommended
   errorFallback: ErrorFallback, // optional
@@ -99,47 +101,3 @@ const App = () => {
 > - If you want to create and use your own custom Error Boundary component, then make sure to include `ErrorBoundary` in the config object.
 > - You do not have to provide `errorFallback` if you are using your own custom Error Boundary component.
 > - I would recommend using the [react-error-boundary](https://www.npmjs.com/package/react-error-boundary) package to create your own custom Error Boundary component. Also, use this amazing [blog by Kent C. Dodds](https://kentcdodds.com/blog/use-react-error-boundary-to-handle-errors-in-react) as a reference.
-
-## Contributors Section
-
-Follow the below steps to test and run the package locally:
-
-1. Build the package using
-
-   ```bash
-   nx build mfe-loader
-   ```
-
-#### OR if you do not have nx installed in the system, use
-
-```bash
-# using yarn
-yarn nx build mfe-loader
-
-# using npm
-npx nx build mfe-loader
-```
-
-2. Create a symlink using (one time only)
-
-   ```bash
-   nx link mfe-loader
-   ```
-
-#### OR if you do not have nx installed in the system, use
-
-```bash
-# using yarn
-yarn nx link mfe-loader
-
-# using npm
-npx nx link mfe-loader
-```
-
-3. Go to an application where you want to use and test the package and run
-
-   ```bash
-   npm link mfe-loader
-   ```
-
-4. Start using the package in your application. Refer to the [usage](#how-to-use) section for more details.
